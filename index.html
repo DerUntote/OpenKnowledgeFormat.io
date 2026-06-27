@@ -291,6 +291,42 @@
 ├── tools/stripe-api.md
 └── constraints/rate-limits.md</div>
       </div>
+
+      <!-- Card 7 -->
+      <div class="card card--usecase reveal reveal-delay-1">
+        <p class="mono-label">Enterprise</p>
+        <h3 class="card__title mt-3">Event-Driven System</h3>
+        <p class="card__text">Decoupled architectures (Quarkus, Kafka) documented via Boundary, Context & Entity.</p>
+        <div class="file-tree-mini">okf/
+├── ordering/
+│   ├── boundary/checkout-api.md
+│   ├── context/order-workflow.md
+│   └── entity/order.md</div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card card--usecase reveal reveal-delay-2">
+        <p class="mono-label">DevOps</p>
+        <h3 class="card__title mt-3">Cloud Infrastructure</h3>
+        <p class="card__text">VPCs, IAM roles, and Terraform modules mapped with their ownership and intent.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── networks/prod-vpc.md
+├── roles/ci-cd-deployer.md
+└── modules/eks-cluster.md</div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card card--usecase reveal reveal-delay-3">
+        <p class="mono-label">Design</p>
+        <h3 class="card__title mt-3">Design System</h3>
+        <p class="card__text">Design tokens, UI components, and usage guidelines linking Figma to React.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── tokens/colors.md
+├── components/button.md
+└── patterns/forms.md</div>
+      </div>
     </div>
   </div>
 </section>
@@ -409,6 +445,7 @@ console.log(concept.content);    <span class="syn-comment">// -> '# Calculation.
       <button class="playground__preset" data-preset="table">Table</button>
       <button class="playground__preset" data-preset="endpoint">Endpoint</button>
       <button class="playground__preset" data-preset="policy">Policy</button>
+      <button class="playground__preset" data-preset="boundary">Boundary</button>
       <button class="playground__preset" data-preset="empty">Empty</button>
     </div>
 

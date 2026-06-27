@@ -509,6 +509,26 @@ The refund policy defines when support can approve a refund, when billing review
 # Citations
 
 [1] [Refund policy source](docs://policies/refunds)`,
+    boundary: `---
+type: Boundary
+title: Checkout API
+technology: Quarkus JAX-RS
+domain: ordering
+tags: [boundary, api, checkout]
+timestamp: 2026-06-27T10:00:00Z
+---
+
+# Checkout API
+
+Receives incoming purchase requests from the web frontend and validates the payload.
+
+## Delegation
+
+Delegates processing to the [Order Workflow Context](../context/order-workflow.md).
+
+## Emits
+
+Publishes the [Order Placed Event](../../events/order-placed.md) to Kafka upon success.`,
     empty: ''
   };
 
