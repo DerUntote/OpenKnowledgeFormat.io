@@ -713,14 +713,37 @@ Publishes the [Order Placed Event](../../events/order-placed.md) to Kafka upon s
       const codeEl = document.getElementById(targetId);
       if (!codeEl) return;
 
-      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+      const textToCopy = codeEl.textContent || codeEl.innerText;
+
+      const onSuccess = () => {
         btn.textContent = 'Copied!';
         btn.classList.add('code-frame__copy--success');
         setTimeout(() => {
           btn.textContent = 'Copy';
           btn.classList.remove('code-frame__copy--success');
         }, 2000);
-      });
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy)
+          .then(onSuccess)
+          .catch(err => console.error('Failed to copy: ', err));
+      } else {
+        // Fallback for file:// or insecure contexts
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        textarea.style.position = 'fixed'; // Avoid scrolling to bottom
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          onSuccess();
+        } catch (err) {
+          console.error('Fallback copy failed', err);
+        }
+        document.body.removeChild(textarea);
+      }
     });
   });
 
