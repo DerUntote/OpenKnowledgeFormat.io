@@ -704,4 +704,23 @@ The refund policy defines when support can approve a refund, when billing review
     });
   });
 
+  // ─── Theme Toggle ──────────────────────────────────────────────────
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  
+  const savedTheme = localStorage.getItem('okf-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  function toggleTheme(e) {
+    if (e) e.preventDefault();
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('okf-theme', newTheme);
+  }
+
+  themeToggle?.addEventListener('click', toggleTheme);
+  themeToggleMobile?.addEventListener('click', toggleTheme);
+
 });

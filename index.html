@@ -36,6 +36,9 @@
       <a href="#playground"  class="nav__link" data-nav>Playground</a>
       <a href="#comparison"  class="nav__link" data-nav>Compare</a>
       <a href="#get-started" class="nav__link" data-nav>Get Started</a>
+      <button class="nav__theme-toggle" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-toggle-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
     </div>
     <button class="nav__mobile-btn" id="nav-toggle" aria-controls="mobile-menu" aria-expanded="false">
       Menu
@@ -48,6 +51,7 @@
     <a href="#playground"  class="nav__mobile-link" data-nav-mobile>Playground</a>
     <a href="#comparison"  class="nav__mobile-link" data-nav-mobile>Compare</a>
     <a href="#get-started" class="nav__mobile-link" data-nav-mobile>Get Started</a>
+    <a href="#" class="nav__mobile-link" id="theme-toggle-mobile" data-nav-mobile>Toggle Theme</a>
   </div>
 </nav>
 
@@ -293,6 +297,102 @@
 
 
 <!-- ============================================================
+     HUMAN VS AGENT
+     ============================================================ -->
+<section class="section" id="human-vs-agent">
+  <div class="container">
+    <div class="reveal" style="max-width: 640px; margin-bottom: 2rem;">
+      <p class="mono-label">Parseability</p>
+      <h2 class="features__title">Built for both worlds</h2>
+      <p class="features__subtitle">Humans get readable documents. Agents get structured JSON.</p>
+    </div>
+    <div class="grid-2 reveal-scale">
+      <div class="code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">Human View</p>
+            <p class="code-frame__lang">Markdown Rendered</p>
+          </div>
+        </div>
+        <div class="code-frame__body" style="background: var(--surface); color: var(--text); padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Monthly Recurring Revenue</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; font-family: var(--font-body);">Metric • [revenue, saas, finance]</p>
+          <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 1.5rem;" />
+          <strong style="font-family: var(--font-body);">Calculation</strong><br/>
+          <span style="font-family: var(--font-body); color: var(--text-muted);">Sum of active subscription amounts.</span>
+        </div>
+      </div>
+      <div class="code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">Agent View</p>
+            <p class="code-frame__lang">JSON Parsed</p>
+          </div>
+        </div>
+        <div class="code-frame__body">
+{
+  <span class="syn-key">"type"</span>: <span class="syn-string">"Metric"</span>,
+  <span class="syn-key">"title"</span>: <span class="syn-string">"Monthly Recurring Revenue"</span>,
+  <span class="syn-key">"tags"</span>: [<span class="syn-string">"revenue"</span>, <span class="syn-string">"saas"</span>],
+  <span class="syn-key">"body"</span>: <span class="syn-string">"# Calculation\\nSum of active subscription amounts."</span>
+}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     HOW TO PARSE
+     ============================================================ -->
+<section class="section" id="how-to-parse">
+  <div class="container">
+    <div class="reveal" style="max-width: 640px; margin-bottom: 2rem;">
+      <p class="mono-label">Ecosystem</p>
+      <h2 class="features__title">3 lines of code</h2>
+      <p class="features__subtitle">No specialized SDK required. Use the Markdown libraries you already know.</p>
+    </div>
+    <div class="grid-2 reveal-scale">
+      <div class="code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">Python</p>
+            <p class="code-frame__lang">frontmatter package</p>
+          </div>
+        </div>
+        <div class="code-frame__body">
+<span class="syn-key">import</span> frontmatter
+
+<span class="syn-comment"># Parse the OKF file</span>
+concept = frontmatter.load(<span class="syn-string">'okf/metrics/mrr.md'</span>)
+
+<span class="syn-comment"># Access metadata and body</span>
+<span class="syn-key">print</span>(concept[<span class="syn-string">'type'</span>])  <span class="syn-comment"># -> 'Metric'</span>
+<span class="syn-key">print</span>(concept.content)  <span class="syn-comment"># -> '# Calculation...'</span></div>
+      </div>
+      <div class="code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">JavaScript / Node</p>
+            <p class="code-frame__lang">gray-matter package</p>
+          </div>
+        </div>
+        <div class="code-frame__body">
+<span class="syn-key">const</span> matter = require(<span class="syn-string">'gray-matter'</span>);
+
+<span class="syn-comment">// Parse the OKF file</span>
+<span class="syn-key">const</span> concept = matter.read(<span class="syn-string">'okf/metrics/mrr.md'</span>);
+
+<span class="syn-comment">// Access metadata and body</span>
+console.log(concept.data.type);  <span class="syn-comment">// -> 'Metric'</span>
+console.log(concept.content);    <span class="syn-comment">// -> '# Calculation...'</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      LIVE PLAYGROUND
      ============================================================ -->
 <section class="section" id="playground">
@@ -437,6 +537,33 @@
 
 
 <!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="reveal" style="max-width: 640px; margin-bottom: 2rem;">
+      <p class="mono-label">FAQ</p>
+      <h2 class="features__title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list reveal-scale">
+      <details class="faq-item">
+        <summary>Why not just use plain Markdown?</summary>
+        <div class="faq-item__content">Plain Markdown is great for humans, but terrible for agents. Without structured metadata (like YAML frontmatter), agents struggle to confidently categorize concepts or extract properties like <code>resource</code> URIs and <code>tags</code>.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need a special parser?</summary>
+        <div class="faq-item__content">No! OKF uses standard YAML frontmatter and standard Markdown syntax. Any existing library that parses frontmatter (like <code>gray-matter</code> for JS, or <code>python-frontmatter</code>) will parse an OKF file perfectly.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How does this differ from RAG or vector databases?</summary>
+        <div class="faq-item__content">OKF is a storage format, not an execution engine. You can parse OKF bundles <em>into</em> a RAG pipeline or a vector database. OKF simply gives you a standardized way to author, version, and share the knowledge before it gets vectorized.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      GETTING STARTED
      ============================================================ -->
 <section class="section" id="get-started">
@@ -533,6 +660,17 @@ git push</div>
   </div>
 </section>
 
+
+<!-- ============================================================
+     COMMUNITY CTA
+     ============================================================ -->
+<section class="cta-section reveal">
+  <div class="container">
+    <h2 class="cta-section__title">Join the OKF Community</h2>
+    <p class="cta-section__subtitle">Help shape the standard, build parsers, or share your knowledge bundles. We're building a common language for humans and AI.</p>
+    <a href="https://github.com/mathiasonea/openknowledgeformat" target="_blank" rel="noopener" class="btn btn--primary">Star on GitHub</a>
+  </div>
+</section>
 
 <!-- ============================================================
      FOOTER
