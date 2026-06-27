@@ -22,6 +22,8 @@
   --success:       #22c55e;
   --error:         #ef4444;
   --warning:       #f59e0b;
+  --nav-bg:        rgba(10, 10, 10, 0.88);
+  --nav-menu-bg:   rgba(10, 10, 10, 0.96);
 
   /* Code syntax */
   --syn-key:       #7dd3fc;
@@ -60,10 +62,33 @@
   --border:        #e5e7eb;
   --border-hover:  #d1d5db;
   --text:          #111827;
-  --text-muted:    #6b7280;
-  --text-dim:      #9ca3af;
+  --text-muted:    #4b5563;
+  --text-dim:      #6b7280;
   --accent-glow:   rgba(59, 130, 246, 0.1);
   --accent-subtle: rgba(59, 130, 246, 0.05);
+  --nav-bg:        rgba(255, 255, 255, 0.88);
+  --nav-menu-bg:   rgba(255, 255, 255, 0.96);
+  --syn-key:       #0284c7;
+  --syn-value:     #16a34a;
+  --syn-string:    #b45309;
+  --syn-comment:   #6b7280;
+  --syn-heading:   #7c3aed;
+  --syn-link:      #2563eb;
+  --syn-tag:       #db2777;
+  --accent-hover:  #2563eb;
+}
+
+/* For code blocks that stay dark, revert syntax colors to light/pastel */
+[data-theme="light"] .code-frame,
+[data-theme="light"] .explorer__content-body,
+[data-theme="light"] .step__code {
+  --syn-key:       #7dd3fc;
+  --syn-value:     #86efac;
+  --syn-string:    #fbbf24;
+  --syn-comment:   #525252;
+  --syn-heading:   #c4b5fd;
+  --syn-link:      #60a5fa;
+  --syn-tag:       #f472b6;
 }
 
 /* Force code blocks to stay dark even in light mode for better contrast */
@@ -71,12 +96,23 @@
   background: #111111;
   border-color: #262626;
 }
+[data-theme="light"] .explorer__content-body {
+  background: #111111;
+}
 [data-theme="light"] .code-frame__body, 
 [data-theme="light"] .code-frame__title,
-[data-theme="light"] .code-frame__lang {
+[data-theme="light"] .code-frame__lang,
+[data-theme="light"] .explorer__content-body,
+[data-theme="light"] .playground__textarea {
   color: #e5e5e5;
 }
-[data-theme="light"] .code-frame__header {
+[data-theme="light"] .playground__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+[data-theme="light"] .code-frame__header,
+[data-theme="light"] .explorer__content-header,
+[data-theme="light"] .playground__editor-header,
+[data-theme="light"] .playground__preview-header {
   border-bottom-color: rgba(255,255,255,0.08);
   background: #161616;
 }
@@ -390,7 +426,7 @@ code, pre {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid var(--border);
-  background: rgba(10, 10, 10, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -483,7 +519,7 @@ code, pre {
   left: 0;
   right: 0;
   border-bottom: 1px solid var(--border);
-  background: rgba(10, 10, 10, 0.96);
+  background: var(--nav-menu-bg);
   backdrop-filter: blur(20px);
   padding: 1rem var(--container-px);
 }
