@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Knowledge Format – Unofficial Community Guide &amp; Interactive Showcase</title>
+  <meta name="description" content="Independent interactive guide to Open Knowledge Format (OKF): explore knowledge bundles, concept files, YAML frontmatter, and linked Markdown.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     DISCLAIMER BANNER
+     ============================================================ -->
+<div style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 16px; text-align: center; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.05em;">
+  <strong>Note:</strong> This is an independent community showcase. We are not affiliated with the original OKF creators. 
+  <a href="https://openknowledgeformat.com" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">Visit the official site</a>.
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav" aria-label="Primary navigation">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo" aria-label="OKF Home">
+      <span class="nav__logo-mark">OKF</span>
+      <span class="nav__logo-text">OpenKnowledgeFormat</span>
+    </a>
+    <div class="nav__links">
+      <a href="#features"    class="nav__link" data-nav>Concepts</a>
+      <a href="#explorer"    class="nav__link" data-nav>Explorer</a>
+      <a href="#usecases"    class="nav__link" data-nav>Use Cases</a>
+      <a href="#playground"  class="nav__link" data-nav>Playground</a>
+      <a href="#comparison"  class="nav__link" data-nav>Compare</a>
+      <a href="#get-started" class="nav__link" data-nav>Get Started</a>
+    </div>
+    <button class="nav__mobile-btn" id="nav-toggle" aria-controls="mobile-menu" aria-expanded="false">
+      Menu
+    </button>
+  </div>
+  <div class="nav__mobile-menu" id="mobile-menu">
+    <a href="#features"    class="nav__mobile-link" data-nav-mobile>Concepts</a>
+    <a href="#explorer"    class="nav__mobile-link" data-nav-mobile>Explorer</a>
+    <a href="#usecases"    class="nav__mobile-link" data-nav-mobile>Use Cases</a>
+    <a href="#playground"  class="nav__mobile-link" data-nav-mobile>Playground</a>
+    <a href="#comparison"  class="nav__mobile-link" data-nav-mobile>Compare</a>
+    <a href="#get-started" class="nav__mobile-link" data-nav-mobile>Get Started</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div>
+        <h1 class="hero__headline headline-serif">
+          Portable knowledge bundles for <em>humans</em> and AI&nbsp;agents.
+        </h1>
+        <div class="hero__badges">
+          <span class="badge badge--filled">OKF v0.1</span>
+          <span class="badge">YAML frontmatter</span>
+          <span class="badge">Markdown body</span>
+          <span class="badge">Git-friendly</span>
+        </div>
+      </div>
+      <div class="hero__aside">
+        <p class="hero__description">
+          OKF represents the metadata, context, and curated insight around data and systems as linked Markdown concept files with YAML frontmatter. Human-readable, agent-parseable, zero&nbsp;platform&nbsp;lock&#8209;in.
+        </p>
+        <div class="hero__ctas">
+          <a href="#explorer" class="btn btn--primary">Explore a bundle</a>
+          <a href="#playground" class="btn">Try the playground</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <p class="hero__stat-value headline-serif">v0.1</p>
+        <p class="hero__stat-label">Format version</p>
+      </div>
+      <div class="hero__stat">
+        <p class="hero__stat-value headline-serif">7</p>
+        <p class="hero__stat-label">Copy-ready examples</p>
+      </div>
+      <div class="hero__stat">
+        <p class="hero__stat-value headline-serif">3</p>
+        <p class="hero__stat-label">Hard requirements</p>
+      </div>
+    </div>
+
+    <!-- Typewriter Code Block -->
+    <div class="hero__code-wrapper reveal">
+      <div class="typewriter-block code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">metrics/monthly-recurring-revenue.md</p>
+            <p class="code-frame__lang">OKF Concept File</p>
+          </div>
+        </div>
+        <div class="code-frame__body" id="typewriter-target"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WHAT IS OKF – Feature Cards
+     ============================================================ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="features__header reveal">
+      <p class="mono-label">Core Concepts</p>
+      <h2 class="features__title">Three building blocks</h2>
+      <p class="features__subtitle">OKF is intentionally minimal. Everything builds on bundles, concepts, and links.</p>
+    </div>
+
+    <div class="grid-3">
+      <!-- Card 1: Knowledge Bundles -->
+      <div class="card card--feature reveal reveal-delay-1">
+        <div class="card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Knowledge Bundles</h3>
+        <p class="card__text">
+          A bundle is a folder you distribute – Git repo, ZIP, or tarball. An <code>index.md</code> maps the contents, a <code>log.md</code> records changes.
+        </p>
+      </div>
+
+      <!-- Card 2: Concept Files -->
+      <div class="card card--feature reveal reveal-delay-2">
+        <div class="card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Concept Files</h3>
+        <p class="card__text">
+          One Markdown file per concept. YAML frontmatter with at least <code>type</code>. The file path (minus <code>.md</code>) becomes the concept&nbsp;ID.
+        </p>
+      </div>
+
+      <!-- Card 3: Linked Concepts -->
+      <div class="card card--feature reveal reveal-delay-3">
+        <div class="card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </div>
+        <h3 class="card__title">Linked Concepts</h3>
+        <p class="card__text">
+          Standard Markdown links assert relationships. The prose around the link explains <em>what kind</em>. A <code># Citations</code> section tracks external&nbsp;sources.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INTERACTIVE CONCEPT EXPLORER
+     ============================================================ -->
+<section class="section" id="explorer">
+  <div class="container">
+    <div class="explorer__header reveal">
+      <p class="mono-label">Interactive Explorer</p>
+      <h2 class="explorer__title">Browse a real OKF bundle</h2>
+      <p class="explorer__subtitle">Click files in the tree to inspect concept files. Linked concepts are highlighted.</p>
+    </div>
+
+    <div class="explorer__panel reveal-scale">
+      <!-- File Tree Sidebar -->
+      <div class="explorer__sidebar">
+        <p class="explorer__sidebar-title">SaaS Metrics Bundle</p>
+        <div class="file-tree" id="file-tree">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- Content Pane -->
+      <div class="explorer__content">
+        <div class="explorer__content-header">
+          <div>
+            <p class="code-frame__title" id="explorer-filename">index.md</p>
+            <p class="code-frame__lang" id="explorer-filetype">markdown</p>
+          </div>
+        </div>
+        <div class="explorer__content-body" id="explorer-content">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     USE CASES
+     ============================================================ -->
+<section class="section" id="usecases">
+  <div class="container">
+    <div class="usecases__header reveal">
+      <p class="mono-label">Use Cases</p>
+      <h2 class="usecases__title">Bundles for every domain</h2>
+      <p class="usecases__subtitle">OKF fits curated knowledge that should be read by both humans and agents.</p>
+    </div>
+
+    <div class="usecases__grid">
+      <!-- Card 1 -->
+      <div class="card card--usecase reveal reveal-delay-1">
+        <p class="mono-label">Metrics</p>
+        <h3 class="card__title mt-3">SaaS Metrics</h3>
+        <p class="card__text">Metrics, source tables, dashboards, and review playbooks as linked concepts.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── metrics/mrr.md
+├── tables/subscriptions.md
+└── playbooks/revenue-review.md</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card card--usecase reveal reveal-delay-2">
+        <p class="mono-label">APIs</p>
+        <h3 class="card__title mt-3">API Documentation</h3>
+        <p class="card__text">Endpoints, schemas, errors, and auth without replacing OpenAPI.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── endpoints/create-customer.md
+├── schemas/customer.md
+└── errors/rate-limit.md</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card card--usecase reveal reveal-delay-3">
+        <p class="mono-label">Framework</p>
+        <h3 class="card__title mt-3">Laravel App</h3>
+        <p class="card__text">Routes, models, policies, jobs, and operational context for humans and agents.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── models/user.md
+├── routes/api-users.md
+└── policies/user-policy.md</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card card--usecase reveal reveal-delay-1">
+        <p class="mono-label">CMS</p>
+        <h3 class="card__title mt-3">WordPress Site</h3>
+        <p class="card__text">Custom post types, taxonomies, ACF fields, and templates as portable knowledge.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── post-types/product.md
+├── acf/product-fields.md
+└── templates/single-product.md</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card card--usecase reveal reveal-delay-2">
+        <p class="mono-label">Data</p>
+        <h3 class="card__title mt-3">Data Warehouse</h3>
+        <p class="card__text">Datasets, tables, metrics, lineage, and data quality notes near the systems they describe.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── datasets/sales.md
+├── tables/orders.md
+└── metrics/gross-revenue.md</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card card--usecase reveal reveal-delay-3">
+        <p class="mono-label">AI</p>
+        <h3 class="card__title mt-3">Agent Context</h3>
+        <p class="card__text">Give agents durable context about systems, tools, playbooks, and constraints before they act.</p>
+        <div class="file-tree-mini">okf/
+├── index.md
+├── systems/billing.md
+├── tools/stripe-api.md
+└── constraints/rate-limits.md</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     LIVE PLAYGROUND
+     ============================================================ -->
+<section class="section" id="playground">
+  <div class="container">
+    <div class="playground__header reveal">
+      <p class="mono-label">Live Playground</p>
+      <h2 class="playground__title">Write &amp; validate OKF</h2>
+      <p class="playground__subtitle">Edit YAML frontmatter and Markdown. See the parsed result and validation status in real time.</p>
+    </div>
+
+    <!-- Preset Buttons -->
+    <div class="playground__presets reveal" id="playground-presets">
+      <button class="playground__preset playground__preset--active" data-preset="metric">Metric</button>
+      <button class="playground__preset" data-preset="table">Table</button>
+      <button class="playground__preset" data-preset="endpoint">Endpoint</button>
+      <button class="playground__preset" data-preset="policy">Policy</button>
+      <button class="playground__preset" data-preset="empty">Empty</button>
+    </div>
+
+    <!-- Editor + Preview Panes -->
+    <div class="playground__panes reveal-scale">
+      <div class="playground__editor">
+        <div class="playground__editor-header">
+          <span class="playground__editor-label">Editor</span>
+          <span class="playground__editor-label text-muted" id="playground-char-count">0 chars</span>
+        </div>
+        <textarea class="playground__textarea" id="playground-input" spellcheck="false" placeholder="---&#10;type: ...&#10;title: ...&#10;---&#10;&#10;# Your concept body"></textarea>
+      </div>
+
+      <div class="playground__preview">
+        <div class="playground__preview-header">
+          <span class="playground__editor-label">Preview</span>
+        </div>
+        <div class="playground__preview-body" id="playground-output">
+          <p class="text-muted" style="font-style: italic">Start typing or load a preset…</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Validation Status Bar -->
+    <div class="playground__status playground__status--empty" id="playground-status">
+      <span class="playground__status-dot"></span>
+      <span id="playground-status-text">Waiting for input</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMPARISON MATRIX
+     ============================================================ -->
+<section class="section" id="comparison">
+  <div class="container">
+    <div class="comparison__header reveal">
+      <p class="mono-label">Comparison</p>
+      <h2 class="comparison__title">OKF vs. adjacent standards</h2>
+      <p class="comparison__subtitle">OKF doesn't replace these tools – it fills the knowledge layer gap between them.</p>
+    </div>
+
+    <div class="comparison__table-wrap reveal-scale">
+      <table class="comparison__table" id="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>OKF</th>
+            <th>RAG Chunks</th>
+            <th>OpenAPI</th>
+            <th>JSON-LD</th>
+            <th>Wiki / Docs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Human-readable</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__partial">△</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__check">✓</td>
+          </tr>
+          <tr>
+            <td>Agent-parseable</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__partial">△</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+          </tr>
+          <tr>
+            <td>Structured metadata</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+          </tr>
+          <tr>
+            <td>Cross-concept links</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__partial">△</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__partial">△</td>
+          </tr>
+          <tr>
+            <td>Git-friendly</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__partial">△</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+          </tr>
+          <tr>
+            <td>No server required</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+          </tr>
+          <tr>
+            <td>Domain-agnostic</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__check">✓</td>
+          </tr>
+          <tr>
+            <td>Portable (ZIP / Git)</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__no">✗</td>
+            <td class="comparison__check">✓</td>
+            <td class="comparison__partial">△</td>
+            <td class="comparison__no">✗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GETTING STARTED
+     ============================================================ -->
+<section class="section" id="get-started">
+  <div class="container">
+    <div class="started__header reveal">
+      <p class="mono-label">Getting Started</p>
+      <h2 class="started__title">Six steps to your first bundle</h2>
+      <p class="started__subtitle">No SDK, no platform. Just folders, frontmatter, and Markdown.</p>
+    </div>
+
+    <div class="steps">
+      <!-- Step 1 -->
+      <div class="step reveal">
+        <div class="step__number">01</div>
+        <div class="step__content">
+          <h3 class="step__title">Create the bundle folder</h3>
+          <p class="step__text">Add an <code>okf/</code> directory in your repo, project, or export location.</p>
+          <div class="step__code">mkdir okf</div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step reveal">
+        <div class="step__number">02</div>
+        <div class="step__content">
+          <h3 class="step__title">Add a root index</h3>
+          <p class="step__text">List your concept groups so humans and agents can scan the bundle at a glance.</p>
+          <div class="step__code"><span class="syn-comment"># okf/index.md</span>
+<span class="syn-delim">---</span>
+<span class="syn-key">okf_version</span>: <span class="syn-string">"0.1"</span>
+<span class="syn-delim">---</span>
+
+<span class="syn-heading"># Metrics</span>
+* [MRR](metrics/mrr.md)</div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step reveal">
+        <div class="step__number">03</div>
+        <div class="step__content">
+          <h3 class="step__title">Create a concept file</h3>
+          <p class="step__text">One Markdown file per concept. Give it YAML frontmatter with at least a <code>type</code>.</p>
+          <div class="step__code"><span class="syn-comment"># okf/metrics/mrr.md</span>
+<span class="syn-delim">---</span>
+<span class="syn-key">type</span>: <span class="syn-value">Metric</span>
+<span class="syn-key">title</span>: <span class="syn-string">Monthly Recurring Revenue</span>
+<span class="syn-delim">---</span>
+
+<span class="syn-heading"># Calculation</span>
+Sum of active subscription amounts.</div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step reveal">
+        <div class="step__number">04</div>
+        <div class="step__content">
+          <h3 class="step__title">Add metadata</h3>
+          <p class="step__text">Enrich with <code>description</code>, <code>resource</code>, <code>tags</code>, and <code>timestamp</code> when useful.</p>
+          <div class="step__code"><span class="syn-key">description</span>: <span class="syn-string">Recurring revenue normalized monthly.</span>
+<span class="syn-key">resource</span>: <span class="syn-string">dashboard://revenue/mrr</span>
+<span class="syn-key">tags</span>: <span class="syn-value">[revenue, saas, finance]</span>
+<span class="syn-key">timestamp</span>: <span class="syn-value">2026-06-13T00:00:00Z</span></div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step reveal">
+        <div class="step__number">05</div>
+        <div class="step__content">
+          <h3 class="step__title">Link related concepts</h3>
+          <p class="step__text">Use standard Markdown links. Add <code># Citations</code> for external sources.</p>
+          <div class="step__code">MRR is calculated from the
+<span class="syn-link">[subscriptions table](/tables/subscriptions.md)</span>.
+
+<span class="syn-heading"># Citations</span>
+[1] <span class="syn-link">[Revenue dashboard](dashboard://revenue/mrr)</span></div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step reveal">
+        <div class="step__number">06</div>
+        <div class="step__content">
+          <h3 class="step__title">Ship it</h3>
+          <p class="step__text">Commit the folder, ship as an archive, or expose it to an agent or catalog.</p>
+          <div class="step__code">git add okf/
+git commit -m <span class="syn-string">"Add OKF knowledge bundle"</span>
+git push</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div>
+        <div class="nav__logo">
+          <span class="nav__logo-mark">OKF</span>
+          <span class="nav__logo-text">OpenKnowledgeFormat.io</span>
+        </div>
+        <p class="footer__brand-text">An independent, interactive guide to the Open Knowledge Format. Created by the community, for the community, to make OKF more accessible.</p>
+        <p class="mono-label footer__updated">Unofficial Showcase · Updated 2026-06-27</p>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Explore</p>
+        <a href="https://openknowledgeformat.com/what-is-okf" class="footer__link" target="_blank" rel="noopener">Beginner Guide</a>
+        <a href="https://openknowledgeformat.com/examples" class="footer__link" target="_blank" rel="noopener">Examples</a>
+        <a href="https://openknowledgeformat.com/validator" class="footer__link" target="_blank" rel="noopener">Validator</a>
+        <a href="https://openknowledgeformat.com/templates" class="footer__link" target="_blank" rel="noopener">Templates</a>
+        <a href="https://openknowledgeformat.com/compare/okf-vs-rag" class="footer__link" target="_blank" rel="noopener">Comparisons</a>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Official Resources</p>
+        <a href="https://openknowledgeformat.com" class="footer__link" target="_blank" rel="noopener">Official OKF Website</a>
+        <a href="https://mathiasonea.com" class="footer__link" target="_blank" rel="noopener">Mathias Onea (Creator)</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      Open Knowledge Format v0.1 · Unofficial Community Showcase · Built with vanilla HTML, CSS &amp; JS
+    </div>
+  </div>
+</footer>
+
+<!-- js-yaml for playground YAML parsing -->
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
