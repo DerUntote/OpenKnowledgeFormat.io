@@ -429,6 +429,39 @@ console.log(concept.content);    <span class="syn-comment">// -> '# Calculation.
 
 
 <!-- ============================================================
+     AGENT SKILLS
+     ============================================================ -->
+<section class="section" id="agent-skill">
+  <div class="container">
+    <div class="reveal" style="max-width: 640px; margin-bottom: 2rem;">
+      <p class="mono-label">Agent Skill</p>
+      <h2 class="features__title">Empower your AI</h2>
+      <p class="features__subtitle">Give Cursor, Claude, or Gemini the ability to document your architecture automatically. Copy the prompt below and paste it into your <code>.cursorrules</code> or system prompt.</p>
+    </div>
+    <div class="reveal-scale">
+      <div class="code-frame">
+        <div class="code-frame__header">
+          <div>
+            <p class="code-frame__title">System Prompt</p>
+            <p class="code-frame__lang">.cursorrules / System Instructions</p>
+          </div>
+          <button class="code-frame__copy" data-copy-code="prompt-agent">Copy</button>
+        </div>
+        <div class="code-frame__body" id="prompt-agent">You are an expert software architecture agent. 
+Whenever you analyze, refactor, or design system architecture, you MUST document your findings using the Open Knowledge Format (OKF).
+
+OKF Rules:
+1. Create one Markdown file per concept.
+2. Every file MUST start with YAML frontmatter containing at least 'type' and 'title'.
+3. Link related concepts using standard Markdown links (e.g. [Checkout API](../boundaries/checkout.md)).
+4. Place files in domain-driven folders (e.g. /okf/ordering/contexts/).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      LIVE PLAYGROUND
      ============================================================ -->
 <section class="section" id="playground">
