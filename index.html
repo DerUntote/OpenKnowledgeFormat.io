@@ -337,41 +337,105 @@
      ============================================================ -->
 <section class="section" id="human-vs-agent">
   <div class="container">
-    <div class="reveal" style="max-width: 640px; margin-bottom: 2rem;">
+    <div class="reveal" style="max-width: 700px; margin-bottom: 3rem;">
       <p class="mono-label">Parseability</p>
       <h2 class="features__title">Built for both worlds</h2>
-      <p class="features__subtitle">Humans get readable documents. Agents get structured JSON.</p>
+      <p class="features__subtitle">A single source of truth. The raw OKF file is perfectly readable in any editor, but can be seamlessly rendered into a rich UI for humans, or parsed into structured JSON for AI agents.</p>
     </div>
-    <div class="grid-2 reveal-scale">
-      <div class="code-frame">
-        <div class="code-frame__header">
-          <div>
-            <p class="code-frame__title">Human View</p>
-            <p class="code-frame__lang">Markdown Rendered</p>
+    
+    <div class="reveal-scale">
+      <!-- 1. SOURCE: RAW OKF FILE -->
+      <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+        <div class="code-frame" style="width: 100%; max-width: 640px; border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow);">
+          <div class="code-frame__header" style="background: rgba(59, 130, 246, 0.1); border-bottom-color: rgba(59, 130, 246, 0.2);">
+            <div>
+              <p class="code-frame__title" style="color: var(--accent-hover);">api/v1/checkout.md</p>
+              <p class="code-frame__lang" style="color: rgba(96, 165, 250, 0.7);">1. The Raw OKF Concept File</p>
+            </div>
           </div>
-        </div>
-        <div class="code-frame__body" style="background: var(--surface); color: var(--text); padding: 2rem;">
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Monthly Recurring Revenue</h3>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; font-family: var(--font-body);">Metric • [revenue, saas, finance]</p>
-          <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 1.5rem;" />
-          <strong style="font-family: var(--font-body);">Calculation</strong><br/>
-          <span style="font-family: var(--font-body); color: var(--text-muted);">Sum of active subscription amounts.</span>
+          <div class="code-frame__body">
+<span class="syn-delim">---</span>
+<span class="syn-key">type</span>: <span class="syn-value">Endpoint</span>
+<span class="syn-key">title</span>: <span class="syn-string">Create Checkout Session</span>
+<span class="syn-key">method</span>: <span class="syn-string">POST</span>
+<span class="syn-key">path</span>: <span class="syn-string">/api/v1/checkout</span>
+<span class="syn-key">description</span>: <span class="syn-string">Initializes a secure checkout session and returns a client secret.</span>
+<span class="syn-delim">---</span>
+
+<span class="syn-heading">### Authentication</span>
+Requires a valid `Bearer Token` with the `write:orders` scope.
+
+<span class="syn-comment">&gt; **Rate Limit Warning**</span>
+<span class="syn-comment">&gt; Strictly limited to 10 requests per minute per IP.</span></div>
         </div>
       </div>
-      <div class="code-frame">
-        <div class="code-frame__header">
-          <div>
-            <p class="code-frame__title">Agent View</p>
-            <p class="code-frame__lang">JSON Parsed</p>
+
+      <!-- ARROWS / CONNECTORS -->
+      <div class="grid-2" style="margin-bottom: 1.5rem;">
+         <div style="display: flex; flex-direction: column; align-items: center; color: var(--text-muted);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem; opacity: 0.5;"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text);">2a. Rendered for Humans</span>
+         </div>
+         <div style="display: flex; flex-direction: column; align-items: center; color: var(--text-muted);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.5rem; opacity: 0.5;"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text);">2b. Parsed for Agents</span>
+         </div>
+      </div>
+
+      <!-- 2. OUTPUTS: HUMAN VS AGENT -->
+      <div class="grid-2">
+        <div class="code-frame">
+          <div class="code-frame__header">
+            <div>
+              <p class="code-frame__title">Human View</p>
+              <p class="code-frame__lang">Markdown Rendered UI</p>
+            </div>
+          </div>
+          <div class="code-frame__body" style="background: var(--surface); color: var(--text); padding: 2rem; height: 100%; white-space: normal; font-family: var(--font-body); font-size: 1rem; overflow-y: auto;">
+            <!-- Document Header -->
+            <div style="border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap;">
+                <span class="badge badge--filled">Endpoint</span>
+                <span class="badge" style="color: var(--success); border-color: rgba(34, 197, 94, 0.3); background: rgba(34, 197, 94, 0.1);">POST</span>
+                <span class="badge">/api/v1/checkout</span>
+              </div>
+              <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em;">Create Checkout Session</h3>
+              <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6; margin: 0;">
+                Initializes a secure checkout session and returns a client secret.
+              </p>
+            </div>
+
+            <!-- Document Body -->
+            <div style="color: var(--text); line-height: 1.6;">
+              <h4 style="font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600;">Authentication</h4>
+              <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9375rem;">
+                Requires a valid <code style="color: var(--accent); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.85em;">Bearer Token</code> with the <code style="color: var(--text); background: var(--bg); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.85em;">write:orders</code> scope.
+              </p>
+
+              <div style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--warning); padding: 1rem; border-radius: 0 4px 4px 0;">
+                <strong style="color: var(--warning); display: block; font-size: 0.875rem; margin-bottom: 0.25rem; font-weight: 600;">Rate Limit Warning</strong>
+                <span style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem;">Strictly limited to 10 requests per minute per IP.</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="code-frame__body">
+        <div class="code-frame">
+          <div class="code-frame__header">
+            <div>
+              <p class="code-frame__title">Agent View</p>
+              <p class="code-frame__lang">JSON Parsed Payload</p>
+            </div>
+          </div>
+          <div class="code-frame__body" style="height: 100%;">
 {
-  <span class="syn-key">"type"</span>: <span class="syn-string">"Metric"</span>,
-  <span class="syn-key">"title"</span>: <span class="syn-string">"Monthly Recurring Revenue"</span>,
-  <span class="syn-key">"tags"</span>: [<span class="syn-string">"revenue"</span>, <span class="syn-string">"saas"</span>],
-  <span class="syn-key">"body"</span>: <span class="syn-string">"# Calculation\\nSum of active subscription amounts."</span>
+  <span class="syn-key">"type"</span>: <span class="syn-string">"Endpoint"</span>,
+  <span class="syn-key">"title"</span>: <span class="syn-string">"Create Checkout Session"</span>,
+  <span class="syn-key">"method"</span>: <span class="syn-string">"POST"</span>,
+  <span class="syn-key">"path"</span>: <span class="syn-string">"/api/v1/checkout"</span>,
+  <span class="syn-key">"description"</span>: <span class="syn-string">"Initializes a secure checkout session and returns a client secret."</span>,
+  <span class="syn-key">"body"</span>: <span class="syn-string">"### Authentication\\nRequires a valid `Bearer Token` with the `write:orders` scope.\\n\\n> **Rate Limit Warning**\\n> Strictly limited to 10 requests per minute per IP."</span>
 }</div>
+        </div>
       </div>
     </div>
   </div>
